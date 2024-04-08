@@ -19,7 +19,7 @@ public class FicheroTextoLectura
 			BufferedReader entrada = new BufferedReader(fr);
 			String s;
 			// Bucle para sacar la información del archivo
-			while((s=entrada.readLine())!=null)
+			while((s = entrada.readLine())!=null)
 			{
 				System.out.println(s);
 			}
