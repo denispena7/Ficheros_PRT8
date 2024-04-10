@@ -13,10 +13,10 @@ public class Ejercicio5
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("Dame un fichero: "); 
-		String fichero = sc.next();
+		String fichero = sc.nextLine();
 		
 		System.out.print("Dame otro fichero: ");
-		String fichero2 = sc.next();		
+		String fichero2 = sc.nextLine();		
 		
 		try 
 		{ 

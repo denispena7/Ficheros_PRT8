@@ -17,36 +17,39 @@ public class Ejercicio7
 		Scanner sc = new Scanner(System.in);
 		String nombreFichero1 = null;
 		String nombreFichero2 = null;
+		
 		System.out.println("Dame el nombre del primer fichero:");
 		nombreFichero1 = sc.nextLine();
 		System.out.println("Dame el nombre del segundo fichero:");
 		nombreFichero2 = sc.nextLine();
-		sc.close();
 
 		String lineaFichero = "";
 
 		try
 		{
-			FileReader fr1 = new FileReader(nombreFichero1);
+			FileReader fr = new FileReader(nombreFichero1);
 
 			File file = new File(nombreFichero2);
 			FileWriter fw = null;
+			
 			if(file.exists())
 			{
-				System.out.println("El destimo YA existe. ¿Sobreescribirlo? [Si/No]");
+				System.out.println("El destino YA existe. ¿Sobreescribirlo? [Si/No]");
 				String respuesta = sc.nextLine();
+				
 				if(respuesta.equals("Si"))
 				{
-					fw = new FileWriter(nombreFichero2);
+					fw = new FileWriter(nombreFichero2, false);
 				}
-				else
+				else if(respuesta.equals("No"))
 				{
 					fw = new FileWriter(nombreFichero2, true);
 				}
 			}
-			FileWriter fr2 = new FileWriter(nombreFichero2);
-			BufferedReader entrada = new BufferedReader(fr1);
-			BufferedWriter bw = new BufferedWriter(fr2);
+			
+			BufferedReader entrada = new BufferedReader(fr);
+			
+			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter salida = new PrintWriter(bw);
 
 			while((lineaFichero = entrada.readLine()) != null)
@@ -55,12 +58,13 @@ public class Ejercicio7
 			}
 
 			System.out.println("La información se copió correctamente");
-			fw.close();
+			
+			sc.close();
 			salida.close();
 			bw.close();
 			entrada.close();
-			fr2.close();
-			fr1.close();
+			fw.close();
+			fr.close();
 		}
 		catch(FileNotFoundException fnfe)
 		{
